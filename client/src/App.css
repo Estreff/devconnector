@@ -37,3 +37,10 @@ img {
 .form-control::placeholder {
   color: #bbb !important;
 }
+
+.is-invalid {
+  box-shadow: 5px 5px 5px darkgray;
+}
+.invalid-feedback {
+  font-weight: bold;
+}

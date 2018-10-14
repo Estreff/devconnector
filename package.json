@@ -14,7 +14,7 @@
   "author": "Erik Streff",
   "license": "MIT",
   "devDependencies": {
-    "nodemon": "^1.18.3"
+    "nodemon": "^1.18.3
   },
   "dependencies": {
     "bcryptjs": "^2.4.3",

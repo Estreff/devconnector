@@ -5,7 +5,8 @@ import {
   PROFILE_LOADING,
   CLEAR_CURRENT_PROFILE,
   GET_ERRORS,
-  SET_CURRENT_USER
+  SET_CURRENT_USER,
+  GET_PROFILES
 } from './types';
 
 // Get Current Profile
@@ -53,6 +54,24 @@ export const addExperience = (experienceData, history) => dispatch => {
     );
 };
 
+// Delete Experience
+export const deleteExperience = id => dispatch => {
+  axios
+    .delete(`/api/profile/experience/:${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
 // Add Education
 export const addEducation = (educationData, history) => dispatch => {
   axios
@@ -62,6 +81,80 @@ export const addEducation = (educationData, history) => dispatch => {
       dispatch({
         type: GET_ERRORS,
         payload: err.response.data
+      })
+    );
+};
+// Delete Experience
+export const deleteEducation = id => dispatch => {
+  axios
+    .delete(`/api/profile/education/:${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response.data
+      })
+    );
+};
+
+// Get Profiles
+export const getProfiles = () => dispatch => {
+  dispatch(setProfileLoading());
+  axios
+    .get('/api/profile/all')
+    .then(res =>
+      dispatch({
+        type: GET_PROFILES,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILES,
+        payload: null
+      })
+    );
+};
+
+// Get Profile by Handle
+export const getProfileByHandle = handle => dispatch => {
+  dispatch(setProfileLoading());
+  axios
+    .get(`/api/profile/handle/${handle}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: null
+      })
+    );
+};
+
+// Get Profile by ID
+export const getProfileByID = user_id => dispatch => {
+  dispatch(setProfileLoading());
+  axios
+    .get(`/api/profile/user/${user_id}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: res.data
+      })
+    )
+    .catch(err =>
+      dispatch({
+        type: GET_PROFILE,
+        payload: null
       })
     );
 };

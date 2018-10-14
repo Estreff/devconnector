@@ -52,6 +52,8 @@ class AddEducation extends Component {
       description: this.state.description
     };
 
+    console.log('Education Info: ', educationData);
+
     this.props.addEducation(educationData, this.props.history);
   };
 
@@ -81,7 +83,7 @@ class AddEducation extends Component {
                   info=""
                 />
                 <TextFieldGroup
-                  placeholder="* Degree or"
+                  placeholder="* Degree or Certificate"
                   name="degree"
                   value={this.state.degree}
                   onChange={this.onChange}

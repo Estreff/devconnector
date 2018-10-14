@@ -252,7 +252,7 @@ router.post(
         from: req.body.from,
         to: req.body.to,
         current: req.body.current,
-        desciption: req.body.desciption
+        description: req.body.description
       };
       // Add Experience to Profile
       profile.education.unshift(newEducation);
